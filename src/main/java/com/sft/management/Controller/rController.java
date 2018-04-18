@@ -9,6 +9,7 @@ import com.sft.management.ServiceImpl.ManagementServiceImpl;
 import com.sft.management.Services.BookService;
 import com.sft.management.Services.ManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +26,7 @@ public class rController {
     @Autowired
     private ManagementServiceImpl managementServiceImpl ;
 
-
+   // @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("/getAll")
     public Collection<Book> getAllBooks()
     {
@@ -42,6 +43,7 @@ public class rController {
         return  bookServiceImpl.findAllBooks();
     }
 
+    //@PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("/saveBook")
     public Collection<Book> saveBook(@RequestParam String bookName, String author, String purchaseDate) throws InterruptedException
     {

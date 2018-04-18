@@ -20,7 +20,7 @@ public class Managers
     private String managerTitle;
 
     @OneToMany(mappedBy="manager",fetch = FetchType.LAZY)
-    private List<Employees> employees;
+private List<Employees> employees;
 
     public Managers(){}
 
